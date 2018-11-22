@@ -124,11 +124,11 @@ gulp.task('browserSync', gulp.parallel(() => {
 			baseDir: "./"
 		}
 	});
+
+	gulp.watch('./scss/*.scss', gulp.parallel('css'));
+	gulp.watch('./js/*.js', gulp.parallel('js'));
+	gulp.watch('./*.html').on("change", browserSync.reload);
 }));
 
 // Dev task
-gulp.task('dev', gulp.parallel('css', 'js', 'browserSync', function () {
-	gulp.watch('./scss/*.scss', gulp.parallel('css'));
-	gulp.watch('./js/*.js', gulp.parallel('js'));
-	gulp.watch('./*.html', browserSync.reload);
-}));
+gulp.task('dev', gulp.parallel('css', 'js', 'browserSync'));
