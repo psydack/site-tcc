@@ -109,8 +109,8 @@ gulp.task('browserSync', gulp.parallel(() => {
 		}
 	});
 
-	gulp.watch('./scss/*.scss', gulp.parallel('css'));
-	gulp.watch('./js/*.js', gulp.parallel('js'));
+	gulp.watch(['./scss/*.scss', "!./scss/*.min.scss"], gulp.parallel('css'));
+	gulp.watch(['./js/*.js', "!./js/*.min.js"], gulp.parallel('js'));
 	gulp.watch('./*.html').on("change", browserSync.reload);
 }));
 
